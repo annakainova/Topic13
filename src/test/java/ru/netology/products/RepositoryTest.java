@@ -1,5 +1,8 @@
+package ru.netology.products;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.netology.products.*;
 
 public class RepositoryTest {
 
@@ -10,7 +13,7 @@ public class RepositoryTest {
     public void addProductTest() {
 
         Repository repo = new Repository();
-        Manager  manager= new Manager(repo);
+        Manager manager = new Manager(repo);
 
         manager.add(item1);
         manager.add(item2);
@@ -25,7 +28,7 @@ public class RepositoryTest {
     public void deleteProductTest() {
 
         Repository repo = new Repository();
-        Manager  manager= new Manager(repo);
+        Manager manager = new Manager(repo);
 
         manager.add(item1);
         manager.add(item2);
@@ -37,7 +40,7 @@ public class RepositoryTest {
 
         repo.deleteProduct(1);
 
-        Product[] expectedDelete  = {item2};
+        Product[] expectedDelete = {item2};
         Product[] actualDelete = repo.findAll();
 
         Assertions.assertArrayEquals(expectedDelete, actualDelete);

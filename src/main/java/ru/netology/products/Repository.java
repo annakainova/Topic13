@@ -1,3 +1,7 @@
+package ru.netology.products;
+
+import ru.netology.products.Product;
+
 public class Repository {
 
     private Product[] products = new Product[0];

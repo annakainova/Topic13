@@ -1,3 +1,5 @@
+package ru.netology.products;
+
 import java.sql.RowIdLifetime;
 
 public class Product {
@@ -10,6 +12,7 @@ public class Product {
         this.name = name;
         this.price = price;
     }
+
     public String getName() {
         return name;
     }

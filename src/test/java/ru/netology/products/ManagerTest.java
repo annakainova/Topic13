@@ -1,16 +1,20 @@
+package ru.netology.products;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.netology.products.*;
 
 public class ManagerTest {
 
     Product item1 = new Book(1, "Lolita", 100, "Nabokov");
-    Product item2 = new Smartphone(2, "Samsung", 1000, "Japan");
+    Product item2 = new Smartphone(2, "Samsung", 1000, "South Korea");
+    Product item3 = new Smartphone(3, "Samsung", 1100, "South Korea");
 
     @Test
     public void addProductTest() {
 
         Repository repo = new Repository();
-        Manager  manager= new Manager(repo);
+        Manager manager = new Manager(repo);
 
         manager.add(item1);
 
@@ -21,9 +25,9 @@ public class ManagerTest {
     }
 
     @Test
-    public void searchIfFoundTest () {
+    public void searchIfFoundTest() {
         Repository repo = new Repository();
-        Manager  manager= new Manager(repo);
+        Manager manager = new Manager(repo);
 
         manager.add(item1);
         manager.add(item2);
@@ -35,15 +39,30 @@ public class ManagerTest {
     }
 
     @Test
-    public void searchIfNotFoundTest () {
+    public void searchIfNotFoundTest() {
         Repository repo = new Repository();
-        Manager  manager= new Manager(repo);
+        Manager manager = new Manager(repo);
 
         manager.add(item1);
         manager.add(item2);
 
         Product[] expected = {};
         Product[] actual = manager.searchBy("Book1");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void searchIfFoundMoreThanOneTest() {
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+
+        manager.add(item1);
+        manager.add(item2);
+        manager.add(item3);
+
+        Product[] expected = {item2, item3};
+        Product[] actual = manager.searchBy("Samsung");
 
         Assertions.assertArrayEquals(expected, actual);
     }
