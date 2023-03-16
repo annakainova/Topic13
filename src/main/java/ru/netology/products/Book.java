@@ -7,4 +7,16 @@ public class Book extends Product {
         super(ID, name, price);
         this.author = author;
     }
+
+    @Override
+    public boolean matches(String search) {
+        if (super.matches(search)) {
+            return true;
+        }
+        if (author.contains(search)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
